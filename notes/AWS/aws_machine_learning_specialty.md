@@ -149,4 +149,105 @@ VPC Endpoint Gateway:
 - Provides ability to Audit the history of workflows
 - Can "wait" for arbitrary amount of time
 
+## Data Exploratory Analysis
 
+### Data Types
+
+:white_check_mark: Numerical (quantitative data)
+
+- Discrete data: integer based
+- Continuous data: infinite number of possible values
+
+:white_check_mark: Categorical (qualitative data)
+
+:white_check_mark: Ordinal 
+
+- mixture of numerical and categorical
+- categorical data has mathematical meaning (eg. movie rating of 5 is better than 1)
+
+### Data Distributions
+
+:white_check_mark: Normal distribution 
+
+- Bell curve that centred around 0
+- Works with continuous data
+- Gives the probability of a data point falling within some given range of a given value
+
+:white_check_mark: Poisson Distribution
+
+- Works with discrete data
+
+:white_check_mark: Binomial Distribution
+
+- Multiple trials of discrete events, such as flipping a coin
+- Works with discrete data 
+
+:white_check_mark: Bernoulli Distribution
+
+- Single trial (special case of binomial distribution)
+- Works with discrete data
+
+### AWS Athena
+
+- Serverless interactive queries of S3 data (No need to load data!)
+- Supports CSV, JSON, ORC, Parquet, Avro
+- Save money by using columnar formats (ORC, Parquet)
+- Uses for ad-hoc query
+
+### AWS QuickSight
+
+- A serverless visualization tool
+- Allows *limited* ETL
+- Dataset are imported into **SPICE** (10GB of SPICE per user)
+- Machine Learning capabilities in QuickSight: Anomaly detection, Forecasting and Auto-narratives
+
+### Types of visualization
+
+- Bar charts (For comparison or distribution)
+- Line charts (For changes over time)
+- Scatter plots, Heat maps (For correlation)
+- Pie charts, Tree maps (For aggregation)
+- Pivot table (For tabular data)
+
+### AWS EMR
+
+- Managed Hadoop framework on EC2 instances
+- EMR clusters include three type of nodes: **master** node (manges the cluster), **core** node (hosts HDFS data) and task node (runs task without hosting data, good use of *spot instances*)
+- Transient cluster (spin up Spot instances for temporary capacity) vs Long-Running cluster (use reserved instances for saving cost) 
+
+### Imputing Missing Data
+
+:x: Replacement with *mean* value
+
+- Only works on column level, misses **correlations between columns**
+- Can't use on categorical features
+- Bias the whole feature value distribution (Median maybe a good choice when outliers are present)
+
+:x: Dropping
+
+- Always a bad choice but as a quick and dirty solution
+
+:white_check_mark: Imputing with Machine Learning
+
+- KNN (Find K similar rows and average their values), but only works for numerical data as it relies on certain *distance* metric
+- Deep Learning (Train a DL model to impute data), works well for categorical data but it is complicated
+- Regression (**MICE**, Multiple Imputation by Chained Equations), find linear or non-linear relationships between the missing feature and other features
+
+:white_check_mark: Collect more better quality data
+
+### Handling unbalanced data
+
+- Oversampling: Randomly copy minority samples
+- Undersampling: Remove majority samples (*Throwing away data is not always a goos choice*)
+- SMOTE: Both generates new samples of minority class using KNN and undersamples majority class
+
+### Handling outliers
+
+- Identify how extreme a data point is by checking out *"how many standard deviations" away from the mean it is* 
+- Responsibly remove outliers from your training data
+
+### Binning
+
+- Transform numerical data to ordinal data
+- Bucket numerical data together based on ranges of values
+- Quantile binning (**even sizes in each bin**)
