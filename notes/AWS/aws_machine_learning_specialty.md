@@ -138,11 +138,13 @@ VPC Endpoint Gateway:
 
 :white_check_mark: AWS Data Pipelines
 
-- Orchestration of ETL jobs
+- A specialized workflow for **working with data**
+- Orchestration of data ETL jobs
+- Directly work with S3, EMR, DynamoDB, Redshift or RDS
 
 :white_check_mark: AWS Step Functions (Orchestrator)
 
-- Use to design and orchestrate **workflows**
+- A *genetic* way to design and orchestrate workflows (NOT ONLY for data)
 - Provides Error handling and Retry mechanism outside of the code
 - Provides ability to Audit the history of workflows
 - Can "wait" for arbitrary amount of time
