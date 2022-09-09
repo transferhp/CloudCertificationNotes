@@ -2,6 +2,8 @@
 
 # AWS Machine Learning Specialty
 
+Following notes are taken when I enrolled in Udemy course AWS Certified Machine Learning Specialty 2022 - Hands on.
+
 # Data Engineering :rocket:
 
 ## S3
@@ -251,3 +253,102 @@ VPC Endpoint Gateway:
 - Transform numerical data to ordinal data
 - Bucket numerical data together based on ranges of values
 - Quantile binning (**even sizes in each bin**)
+
+## General Deep Learning
+
+### Activation Functions
+
+- Define the output of a node/neuron given its input signals
+- Non-linear activation functions: works for back-propagation and multi-layers (e.g. ReLU, Leaky ReLU, PReLU and Maxout)
+- Softmax (used on the final output layer for multiple classification problem)
+
+### CNN
+
+- "feature-location invariant", which means it can find features by scanning the whole data (e.g. image)
+- Works for data in the format of width x length x color channels
+
+### RNN
+
+- Works for time-series data or data that consists of sequences of arbitrary length
+- LSTM, GRU (simplified LSTM)
+
+### Modern NLP with BERT and GPT, and Transfer Learning
+
+- Transformer (adopts "self-attention" mechanism)
+- BERT (transformer-based natural language processing model)
+- GPT (Generative Pre-trained Transformer)
+- Transfer Learning (takes pre-trained model and fine-tune on it for our own use case)
+
+    :white_check_mark: Use a low learning rate
+
+    :white_check_mark: Add new layers to the top of a frozen model
+
+### Deep Learning on EC2 and EMR
+
+- EMR supports MXNet and GPU instance types (P3, P2 and G3)
+- EC2 instances can be launched using **Deep Learning AMI** to train DL models
+
+
+### Tunning Neural Networks
+
+- Batch size
+
+    :white_check_mark: small batch size tend to not got stuck in local minimum
+
+- Learning rate
+
+    :x: small learning rate increases training time
+
+    :x: large learning rate overshoots the optimal solution
+
+### Regularization for Neural Networks
+
+- Dropout (drop neurons at random at each training step)
+- Early stopping
+
+### Fixes for vanishing gradients
+
+:white_check_mark: Uses ReLU as activation function
+
+:white_check_mark: Uses specific architectures (e.g. LSTM and ResNet)
+
+:white_check_mark: multi-level heirarchy (breaks whole network into sub-networks and trained individually)
+
+### Measuring Models
+
+- Precision (AKA Correct Positives)
+
+    :white_check_mark: uses it if you care more *False Positives*
+
+- Recall (Sensitivity, True Positive Rate)
+
+    :white_check_mark: uses it if you care more *False Negatives*
+  
+- ROC (plot of true positive rate vs false positive rate at different threshold)
+
+- AUC (Area under ROC curve) 
+
+    :white_check_mark: uses to compare different classifiers
+
+- Specificity (True negative rate)
+
+- F1 score 
+
+    :white_check_mark: use it if you care both *precision* AND *recall*
+
+### Ensemble method
+
+- Bagging
+
+    Train N different models by random sampling the original data with replacement into N folds.
+
+    :white_check_mark: avoid overfitting
+
+    :white_check_mark: easier to parallelize
+
+- Boosting
+
+    Train models in sequential. Each model will take into account the previous model's prediction and adjust weights to each data point.
+
+    :white_check_mark: achieve high accuracy
+
