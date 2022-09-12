@@ -1,12 +1,49 @@
+
 ![exam_logo](../../images/AWS-ML-Specialty.png)
 
 # AWS Machine Learning Specialty
 
 Following notes are taken when I enrolled in Udemy course AWS Certified Machine Learning Specialty 2022 - Hands on.
 
-# Data Engineering :rocket:
+# Table of Contents
+<!-- vscode-markdown-toc -->
+* 1. [Data Engineering :rocket:](#DataEngineering:rocket:)
+	* 1.1. [S3](#S3)
+	* 1.2. [Kinesis](#Kinesis)
+	* 1.3. [Glue](#Glue)
+* 2. [Data Exploratory Analysis](#DataExploratoryAnalysis)
+	* 2.1. [Data Types](#DataTypes)
+	* 2.2. [Data Distributions](#DataDistributions)
+	* 2.3. [AWS Athena](#AWSAthena)
+	* 2.4. [AWS QuickSight](#AWSQuickSight)
+	* 2.5. [Types of visualization](#Typesofvisualization)
+	* 2.6. [AWS EMR](#AWSEMR)
+	* 2.7. [Imputing Missing Data](#ImputingMissingData)
+	* 2.8. [Handling unbalanced data](#Handlingunbalanceddata)
+	* 2.9. [Handling outliers](#Handlingoutliers)
+	* 2.10. [Binning](#Binning)
+* 3. [General Deep Learning :rocket:](#GeneralDeepLearning:rocket:)
+	* 3.1. [Activation Functions](#ActivationFunctions)
+	* 3.2. [CNN](#CNN)
+	* 3.3. [RNN](#RNN)
+	* 3.4. [Modern NLP with BERT and GPT, and Transfer Learning](#ModernNLPwithBERTandGPTandTransferLearning)
+	* 3.5. [Deep Learning on EC2 and EMR](#DeepLearningonEC2andEMR)
+	* 3.6. [Tunning Neural Networks](#TunningNeuralNetworks)
+	* 3.7. [Regularization for Neural Networks](#RegularizationforNeuralNetworks)
+	* 3.8. [Fixes for vanishing gradients](#Fixesforvanishinggradients)
+	* 3.9. [Measuring Models](#MeasuringModels)
+	* 3.10. [Ensemble method](#Ensemblemethod)
+* 4. [Amazon SageMaker :rocket:](#AmazonSageMaker:rocket:)
 
-## S3
+<!-- vscode-markdown-toc-config
+	numbering=true
+	autoSave=true
+	/vscode-markdown-toc-config -->
+<!-- /vscode-markdown-toc -->
+
+##  1. <a name='DataEngineering:rocket:'></a>Data Engineering :rocket:
+
+###  1.1. <a name='S3'></a>S3
 
 :white_check_mark: Overview
 
@@ -44,7 +81,7 @@ VPC Endpoint Gateway:
 - Allow traffic to stay within your VPC (instead of going through public web)
 - Make sure your private services (AWS SageMaker) can access S3
 
-### Kinesis
+###  1.2. <a name='Kinesis'></a>Kinesis
 
 :white_check_mark: Overview
 
@@ -86,7 +123,7 @@ VPC Endpoint Gateway:
 - Keep data for 1 hour to 10 years
 - Video playback capability
 
-### Glue
+###  1.3. <a name='Glue'></a>Glue
 
 :white_check_mark: Glue Data Catalog
 
@@ -151,9 +188,9 @@ VPC Endpoint Gateway:
 - Provides ability to Audit the history of workflows
 - Can "wait" for arbitrary amount of time
 
-## Data Exploratory Analysis
+##  2. <a name='DataExploratoryAnalysis'></a>Data Exploratory Analysis
 
-### Data Types
+###  2.1. <a name='DataTypes'></a>Data Types
 
 :white_check_mark: Numerical (quantitative data)
 
@@ -167,7 +204,7 @@ VPC Endpoint Gateway:
 - mixture of numerical and categorical
 - categorical data has mathematical meaning (eg. movie rating of 5 is better than 1)
 
-### Data Distributions
+###  2.2. <a name='DataDistributions'></a>Data Distributions
 
 :white_check_mark: Normal distribution 
 
@@ -189,21 +226,21 @@ VPC Endpoint Gateway:
 - Single trial (special case of binomial distribution)
 - Works with discrete data
 
-### AWS Athena
+###  2.3. <a name='AWSAthena'></a>AWS Athena
 
 - Serverless interactive queries of S3 data (No need to load data!)
 - Supports CSV, JSON, ORC, Parquet, Avro
 - Save money by using columnar formats (ORC, Parquet)
 - Uses for ad-hoc query
 
-### AWS QuickSight
+###  2.4. <a name='AWSQuickSight'></a>AWS QuickSight
 
 - A serverless visualization tool
 - Allows *limited* ETL
 - Dataset are imported into **SPICE** (10GB of SPICE per user)
 - Machine Learning capabilities in QuickSight: Anomaly detection, Forecasting and Auto-narratives
 
-### Types of visualization
+###  2.5. <a name='Typesofvisualization'></a>Types of visualization
 
 - Bar charts (For comparison or distribution)
 - Line charts (For changes over time)
@@ -211,13 +248,13 @@ VPC Endpoint Gateway:
 - Pie charts, Tree maps (For aggregation)
 - Pivot table (For tabular data)
 
-### AWS EMR
+###  2.6. <a name='AWSEMR'></a>AWS EMR
 
 - Managed Hadoop framework on EC2 instances
 - EMR clusters include three type of nodes: **master** node (manges the cluster), **core** node (hosts HDFS data) and task node (runs task without hosting data, good use of *spot instances*)
 - Transient cluster (spin up Spot instances for temporary capacity) vs Long-Running cluster (use reserved instances for saving cost) 
 
-### Imputing Missing Data
+###  2.7. <a name='ImputingMissingData'></a>Imputing Missing Data
 
 :x: Replacement with *mean* value
 
@@ -237,42 +274,42 @@ VPC Endpoint Gateway:
 
 :white_check_mark: Collect more better quality data
 
-### Handling unbalanced data
+###  2.8. <a name='Handlingunbalanceddata'></a>Handling unbalanced data
 
 - Oversampling: Randomly copy minority samples
 - Undersampling: Remove majority samples (*Throwing away data is not always a goos choice*)
 - SMOTE: Both generates new samples of minority class using KNN and undersamples majority class
 
-### Handling outliers
+###  2.9. <a name='Handlingoutliers'></a>Handling outliers
 
 - Identify how extreme a data point is by checking out *"how many standard deviations" away from the mean it is* 
 - Responsibly remove outliers from your training data
 
-### Binning
+###  2.10. <a name='Binning'></a>Binning
 
 - Transform numerical data to ordinal data
 - Bucket numerical data together based on ranges of values
 - Quantile binning (**even sizes in each bin**)
 
-## General Deep Learning
+##  3. <a name='GeneralDeepLearning:rocket:'></a>General Deep Learning :rocket:
 
-### Activation Functions
+###  3.1. <a name='ActivationFunctions'></a>Activation Functions
 
 - Define the output of a node/neuron given its input signals
 - Non-linear activation functions: works for back-propagation and multi-layers (e.g. ReLU, Leaky ReLU, PReLU and Maxout)
 - Softmax (used on the final output layer for multiple classification problem)
 
-### CNN
+###  3.2. <a name='CNN'></a>CNN
 
 - "feature-location invariant", which means it can find features by scanning the whole data (e.g. image)
 - Works for data in the format of width x length x color channels
 
-### RNN
+###  3.3. <a name='RNN'></a>RNN
 
 - Works for time-series data or data that consists of sequences of arbitrary length
 - LSTM, GRU (simplified LSTM)
 
-### Modern NLP with BERT and GPT, and Transfer Learning
+###  3.4. <a name='ModernNLPwithBERTandGPTandTransferLearning'></a>Modern NLP with BERT and GPT, and Transfer Learning
 
 - Transformer (adopts "self-attention" mechanism)
 - BERT (transformer-based natural language processing model)
@@ -283,13 +320,13 @@ VPC Endpoint Gateway:
 
     :white_check_mark: Add new layers to the top of a frozen model
 
-### Deep Learning on EC2 and EMR
+###  3.5. <a name='DeepLearningonEC2andEMR'></a>Deep Learning on EC2 and EMR
 
 - EMR supports MXNet and GPU instance types (P3, P2 and G3)
 - EC2 instances can be launched using **Deep Learning AMI** to train DL models
 
 
-### Tunning Neural Networks
+###  3.6. <a name='TunningNeuralNetworks'></a>Tunning Neural Networks
 
 - Batch size
 
@@ -301,12 +338,12 @@ VPC Endpoint Gateway:
 
     :x: large learning rate overshoots the optimal solution
 
-### Regularization for Neural Networks
+###  3.7. <a name='RegularizationforNeuralNetworks'></a>Regularization for Neural Networks
 
 - Dropout (drop neurons at random at each training step)
 - Early stopping
 
-### Fixes for vanishing gradients
+###  3.8. <a name='Fixesforvanishinggradients'></a>Fixes for vanishing gradients
 
 :white_check_mark: Uses ReLU as activation function
 
@@ -314,7 +351,7 @@ VPC Endpoint Gateway:
 
 :white_check_mark: multi-level heirarchy (breaks whole network into sub-networks and trained individually)
 
-### Measuring Models
+###  3.9. <a name='MeasuringModels'></a>Measuring Models
 
 - Precision (AKA Correct Positives)
 
@@ -332,11 +369,11 @@ VPC Endpoint Gateway:
 
 - Specificity (True negative rate)
 
-- F1 score 
+- F1 score
 
     :white_check_mark: use it if you care both *precision* AND *recall*
 
-### Ensemble method
+###  3.10. <a name='Ensemblemethod'></a>Ensemble method
 
 - Bagging
 
@@ -352,3 +389,40 @@ VPC Endpoint Gateway:
 
     :white_check_mark: achieve high accuracy
 
+##  4. <a name='AmazonSageMaker:rocket:'></a>Amazon SageMaker :rocket:
+
+* Dataprep
+
+  * Data sources:
+
+    **S3** (RecordIO/Protobuf for built-in algorithms), can also load from *Athena*, *EMR*, *Redshift* and Amazon *Keyspaces DB*
+
+  * Processing tools:
+
+    Spark, scikit_learn, numpy and pandas (used in notebook)
+
+* Training
+
+  * training data (*URL of S3 bucket)
+  * ML compute resources
+  * output location (*URL of S3 bucket)
+  * training code (*ECR path*)
+
+        Training code options:
+
+            - Built-in algorithms
+            - Spark MLLib
+            - Custom Python Tensorflow/MXNet code
+            - Custom code lives in Docker image
+            - Algorithm purchased from AWS market
+
+* Deployment
+
+  * model artifact saved to S3
+  * individual prediction (**Persistent endpoint**)
+  * batch prediction (**SageMaker Batch Transform**)
+  * Lots of cool options:
+    * Inference Pipelines for more complex processing
+    * deploying to edge devices (**SageMaker Neo**)
+    * accelerating deep learning inference (**Elastic Inference**)
+    * automatic scaling (increase # of endpoints) 
