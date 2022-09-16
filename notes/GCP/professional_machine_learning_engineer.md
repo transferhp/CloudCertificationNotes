@@ -75,6 +75,8 @@ Both notebooks are pre-packaged with JupyterLab and have a pre-installed suite o
 
 - Use Feature Store for structured data (online serving of features for online prediction)
 
+- Use *BigQuery* to process structured data and use *Dataflow* to process unstructured data
+
 ### Best practices for training a model
 
 - For small datasets, train a model within the **Notebook instance**
@@ -96,3 +98,15 @@ Both notebooks are pre-packaged with JupyterLab and have a pre-installed suite o
 - track experiment metrics such as loss and accuracy 
 - visualize a model graph
 - project embeddings to a lower space
+
+## Responsible AI development
+
+- Unconscious biases exist in data, they can exist in both *collecting* and *labeling* data
+
+    :white_check_mark: use **What-If** tool to help you diagnose fairness issues in your data
+
+- *Confusion matrix* helps in understanding inclusion and how to introduce inclusion across different kinds of groups across your data
+
+    :white_check_mark: the **Facets** tool can help you make machine learning model more inclusive.
+
+- *Equality of opportunity* approach helps achieve a better performance across **subgroups**
