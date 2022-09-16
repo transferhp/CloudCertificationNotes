@@ -34,6 +34,7 @@ Following notes are taken when I enrolled in Udemy course AWS Certified Machine 
 	* 3.9. [Measuring Models](#MeasuringModels)
 	* 3.10. [Ensemble method](#Ensemblemethod)
 * 4. [Amazon SageMaker :rocket:](#AmazonSageMaker:rocket:)
+	* 4.1. [Built-in algorithms](#Built-inalgorithms)
 
 <!-- vscode-markdown-toc-config
 	numbering=true
@@ -391,7 +392,7 @@ VPC Endpoint Gateway:
 
 ##  4. <a name='AmazonSageMaker:rocket:'></a>Amazon SageMaker :rocket:
 
-* Dataprep
+* Data preparation
 
   * Data sources:
 
@@ -403,9 +404,9 @@ VPC Endpoint Gateway:
 
 * Training
 
-  * training data (*URL of S3 bucket)
+  * training data (*URL of S3 bucket*)
   * ML compute resources
-  * output location (*URL of S3 bucket)
+  * output location (*URL of S3 bucket*)
   * training code (*ECR path*)
 
         Training code options:
@@ -426,3 +427,55 @@ VPC Endpoint Gateway:
     * deploying to edge devices (**SageMaker Neo**)
     * accelerating deep learning inference (**Elastic Inference**)
     * automatic scaling (increase # of endpoints) 
+
+###  4.1. <a name='Built-inalgorithms'></a>Built-in algorithms
+
+* Linear Learner
+
+  * input:
+
+        RecordIO in float 32 (Recommended)
+        CSV (first column is the label followed by feature data)
+        Pipe mode works best for large dataset
+
+  * normalize data upfront or let linear learner normalize your data for you
+
+  * shuffle data to get good results
+
+  * offer L1 and L2 regularization
+
+  * Hyperparameters: **multi-class weights**, **learning rate** and **batch size**
+
+  * benefits from more than one machine other than multiple GPU on one machine 
+
+
+* XGBoost
+
+  * input:
+
+        CSV
+        LibSVM
+        RecordIO
+        Protobuf
+        Parquet
+
+* Seq2Seq
+
+  * input:
+
+        RecordIO or protobuf
+        Tokens are integer
+
+  * **blue score** and **perplexity** are well suited for measuring machine translation problem
+
+  * only support training on one machine
+
+* DeepAR
+
+  * used for forecasting one-dimensional time series data
+
+  * input:
+
+        Json Line format
+        Gzip file
+        Parquet
