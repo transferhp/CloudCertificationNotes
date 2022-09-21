@@ -25,7 +25,6 @@
 
 - [x] what are some key actions to collect, analyze, predict and react to the data or predictions?
 
-
 ## vertex Notebooks
 
 - managed notebooks
@@ -41,9 +40,9 @@
 - user-managed notebooks
 
     Ideal for:
-    * heavily customized Deep Learning VM 
-    * health status monitoring
-    * have specific network and security needs (set VPC service control)
+  - heavily customized Deep Learning VM
+  - health status monitoring
+  - have specific network and security needs (set VPC service control)
 
 Both notebooks are protected by Google Cloud authentication and authorization
 
@@ -95,7 +94,7 @@ Both notebooks are pre-packaged with JupyterLab and have a pre-installed suite o
 
 ### Nest practices for using Vertex AI Tensorboard
 
-- track experiment metrics such as loss and accuracy 
+- track experiment metrics such as loss and accuracy
 - visualize a model graph
 - project embeddings to a lower space
 
@@ -110,3 +109,31 @@ Both notebooks are pre-packaged with JupyterLab and have a pre-installed suite o
     :white_check_mark: the **Facets** tool can help you make machine learning model more inclusive.
 
 - *Equality of opportunity* approach helps achieve a better performance across **subgroups**
+
+## Exploratory Data Analysis
+
+- univariate (single feature/attribute)
+
+  - Categorical
+
+    - `pd.crosstab` (numerical EDA)
+    - `sns.CountPlot()` (visual EDA)
+
+  - Continuous
+
+    - `dataframe.describe` (numerical EDA)
+    - `sns.boxplot(), displot(), kdeplot()` (visual EDA)
+
+- bivariate (two features/attributes)
+
+  - category to category
+
+    - `sns.factorPlot()`
+
+  - category to continuous
+
+    - `sns.jointPlot()`
+
+  - continuous to category
+
+    - `sns.factorPlot()`  

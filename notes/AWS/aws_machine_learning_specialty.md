@@ -11,7 +11,7 @@ Following notes are taken when I enrolled in Udemy course AWS Certified Machine 
 	* 1.1. [S3](#S3)
 	* 1.2. [Kinesis](#Kinesis)
 	* 1.3. [Glue](#Glue)
-* 2. [Data Exploratory Analysis](#DataExploratoryAnalysis)
+* 2. [Data Exploratory Analysis :rocket:](#DataExploratoryAnalysis:rocket:)
 	* 2.1. [Data Types](#DataTypes)
 	* 2.2. [Data Distributions](#DataDistributions)
 	* 2.3. [AWS Athena](#AWSAthena)
@@ -21,7 +21,7 @@ Following notes are taken when I enrolled in Udemy course AWS Certified Machine 
 	* 2.7. [Imputing Missing Data](#ImputingMissingData)
 	* 2.8. [Handling unbalanced data](#Handlingunbalanceddata)
 	* 2.9. [Handling outliers](#Handlingoutliers)
-	* 2.10. [Binning](#Binning)20220919
+	* 2.10. [Binning](#Binning)
 * 3. [General Deep Learning :rocket:](#GeneralDeepLearning:rocket:)
 	* 3.1. [Activation Functions](#ActivationFunctions)
 	* 3.2. [CNN](#CNN)
@@ -35,6 +35,19 @@ Following notes are taken when I enrolled in Udemy course AWS Certified Machine 
 	* 3.10. [Ensemble method](#Ensemblemethod)
 * 4. [Amazon SageMaker :rocket:](#AmazonSageMaker:rocket:)
 	* 4.1. [Built-in algorithms](#Built-inalgorithms)
+	* 4.2. [Automatic Model Tuning](#AutomaticModelTuning)
+	* 4.3. [Apache Spark](#ApacheSpark)
+	* 4.4. [SageMaker Autopilot/AutoML](#SageMakerAutopilotAutoML)
+	* 4.5. [SageMaker Model Monitor](#SageMakerModelMonitor)
+* 5. [High-level ML services :rocket:](#High-levelMLservices:rocket:)
+	* 5.1. [Amazon Comprehend](#AmazonComprehend)
+	* 5.2. [Amazon Translate](#AmazonTranslate)
+	* 5.3. [Amazon Transcribe](#AmazonTranscribe)
+	* 5.4. [Amazon Polly](#AmazonPolly)
+	* 5.5. [Amazon Rekognition](#AmazonRekognition)
+	* 5.6. [Amazon Forecast](#AmazonForecast)
+	* 5.7. [Amazon Lex](#AmazonLex)
+	* 5.8. [Amazon Personalize](#AmazonPersonalize)
 
 <!-- vscode-markdown-toc-config
 	numbering=true
@@ -189,7 +202,7 @@ VPC Endpoint Gateway:
 * Provides ability to Audit the history of workflows
 * Can "wait" for arbitrary amount of time
 
-##  2. <a name='DataExploratoryAnalysis'></a>Data Exploratory Analysis
+##  2. <a name='DataExploratoryAnalysis:rocket:'></a>Data Exploratory Analysis :rocket:
 
 ###  2.1. <a name='DataTypes'></a>Data Types
 
@@ -406,7 +419,7 @@ VPC Endpoint Gateway:
   * training data (*URL of S3 bucket*)
   * ML compute resources
   * output location (*URL of S3 bucket*)
-  * training code (*ECR path*)
+  * training code (comes from a Docker image registered with *ECR* path)
     * Built-in algorithms
     * Spark MLLib
     * Custom Python Tensorflow/MXNet code
@@ -586,4 +599,94 @@ VPC Endpoint Gateway:
     * bad things happen after a given state/action, reduces Q
     * rewards happen after a given state/action, increases Q
   * distributed training with multi-core and multi-instance
-   
+
+###  4.2. <a name='AutomaticModelTuning'></a>Automatic Model Tuning
+
+* learns as it goes (don't have to try every possible combination)
+* best practices:
+
+    :x: don't optimize too many hyperparameters at once
+
+    :x: limit your value ranges
+
+    :x: don't run too many training jobs concurrently
+
+###  4.3. <a name='ApacheSpark'></a>Apache Spark
+
+* connect a SageMaker notebook to a remote EMR cluster running spark
+* call fit on *SageMakerEstimator* (KMeans, PCA, XGBoost) to get a *SageMakerModel*
+* call transform on the *SageMakerModel* to make inferences
+
+###  4.4. <a name='SageMakerAutopilotAutoML'></a>SageMaker Autopilot/AutoML
+
+* automates algorithm selection, data preprocessing and model tuning
+
+###  4.5. <a name='SageMakerModelMonitor'></a>SageMaker Model Monitor
+
+* get alerts via CloudWatch
+* visualize data drift, detect anomalies & outliers
+* no code needed
+* integrates with **Clarify** to detect potential bias
+
+##  5. <a name='High-levelMLservices:rocket:'></a>High-level ML services :rocket:
+
+###  5.1. <a name='AmazonComprehend'></a>Amazon Comprehend
+
+* used for Natural Language Processing stuff
+
+  * detect entities
+  * detect key phrase
+  * sentiment analysis
+  * detect syntax
+
+###  5.2. <a name='AmazonTranslate'></a>Amazon Translate
+
+* uses deep learning for translation
+
+###  5.3. <a name='AmazonTranscribe'></a>Amazon Transcribe
+
+* used for Speech to Text
+
+###  5.4. <a name='AmazonPolly'></a>Amazon Polly
+
+* used for Text to Speech
+
+###  5.5. <a name='AmazonRekognition'></a>Amazon Rekognition
+
+* used for Computer Vision
+
+###  5.6. <a name='AmazonForecast'></a>Amazon Forecast
+
+* used for time-series analysis
+* has following algorithms:
+  
+  * CNN-QR (CNN backend)
+
+    :white_check_mark: best for large dataset
+
+    :white_check_mark: accepts related historical time series data & *metadata*
+
+  * DeepAR+ (RNN backend)
+
+    :white_check_mark: best for large datasets
+
+    :white_check_mark: accepts related forward-looking time series data & *metadata* 
+
+  * Prophet
+
+    :white_check_mark: additive model with non-linear trends and seasonality
+  * NPTS
+
+    :white_check_mark: best for non-parametric time series data
+
+    :white_check_mark: good for *sparse* data
+  * ARIMA
+
+    :white_check_mark: best for simple dataset (< 100 time series data)
+  * ETS 
+
+    :white_check_mark: best for simple dataset (< 100 time series data)
+
+###  5.7. <a name='AmazonLex'></a>Amazon Lex
+
+###  5.8. <a name='AmazonPersonalize'></a>Amazon Personalize
