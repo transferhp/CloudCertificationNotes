@@ -17,14 +17,14 @@ Following notes are taken when I enrolled in Udemy course AWS Certified Machine 
 	* 1.4. [DBs](#DBs)
 		* 1.4.1. [Redshift](#Redshift)
 		* 1.4.2. [RDS](#RDS)
-	* 1.5. [DynamoDB](#DynamoDB)
-	* 1.6. [Neptune](#Neptune)
-	* 1.7. [DMS (Data Migration Service)](#DMSDataMigrationService)
-	* 1.8. [ElasticSearch](#ElasticSearch)
-	* 1.9. [ElatiCache](#ElatiCache)
-	* 1.10. [AWS Data Pipelines](#AWSDataPipelines)
-	* 1.11. [AWS Batch](#AWSBatch)
-	* 1.12. [AWS Step Functions (workflow management)](#AWSStepFunctionsworkflowmanagement)
+		* 1.4.3. [DynamoDB](#DynamoDB)
+		* 1.4.4. [Neptune](#Neptune)
+	* 1.5. [DMS (Data Migration Service)](#DMSDataMigrationService)
+	* 1.6. [ElasticSearch](#ElasticSearch)
+	* 1.7. [ElatiCache](#ElatiCache)
+	* 1.8. [AWS Data Pipelines](#AWSDataPipelines)
+	* 1.9. [AWS Batch](#AWSBatch)
+	* 1.10. [AWS Step Functions (workflow management)](#AWSStepFunctionsworkflowmanagement)
 * 2. [Data Exploratory Analysis :rocket:](#DataExploratoryAnalysis:rocket:)
 	* 2.1. [Data Types](#DataTypes)
 	* 2.2. [Data Distributions](#DataDistributions)
@@ -206,41 +206,41 @@ Streams video feeds from security cameras, web cams, audio feeds, etc. to S3 or 
 * Relational database service for MySQL, SQL Server, Oracle, Postgres, Aurora, MariaDB
 * Must provision servers in advance
 
-###  1.5. <a name='DynamoDB'></a>DynamoDB
+####  1.4.3. <a name='DynamoDB'></a>DynamoDB
 
 * NoSQL database
 
-###  1.6. <a name='Neptune'></a>Neptune
+####  1.4.4. <a name='Neptune'></a>Neptune
 
 * Fully managed graph database service
 
-###  1.7. <a name='DMSDataMigrationService'></a>DMS (Data Migration Service)
+###  1.5. <a name='DMSDataMigrationService'></a>DMS (Data Migration Service)
 
 * Move data from your database to a database on AWS service with minimal downtime
 
-###  1.8. <a name='ElasticSearch'></a>ElasticSearch
+###  1.6. <a name='ElasticSearch'></a>ElasticSearch
 
 * Index for your data
 * Search capability
 
-###  1.9. <a name='ElatiCache'></a>ElatiCache
+###  1.7. <a name='ElatiCache'></a>ElatiCache
 
 * data cache technology
 
-###  1.10. <a name='AWSDataPipelines'></a>AWS Data Pipelines
+###  1.8. <a name='AWSDataPipelines'></a>AWS Data Pipelines
 
 * A specialized workflow for **working with data**
 * Orchestration of data ETL jobs
 * Directly work with S3, EMR, DynamoDB, Redshift or RDS
 * Runs on multiple EC2 instances and/or EMR
 
-###  1.11. <a name='AWSBatch'></a>AWS Batch
+###  1.9. <a name='AWSBatch'></a>AWS Batch
 
 * Service to run offline computing workload
 * Batch jobs run on Docker containers
 * Needs to define the set of instances types and how many instances for the workload (compared to Lambda without provisioning or managing servers)
 
-###  1.12. <a name='AWSStepFunctionsworkflowmanagement'></a>AWS Step Functions (workflow management)
+###  1.10. <a name='AWSStepFunctionsworkflowmanagement'></a>AWS Step Functions (workflow management)
 
 * Serverless service to design and orchestrate workflows (NOT ONLY for data)
 * Integrates with other AWS services
