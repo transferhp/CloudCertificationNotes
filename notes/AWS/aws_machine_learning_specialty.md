@@ -159,13 +159,13 @@ Streams video feeds from security cameras, web cams, audio feeds, etc. to S3 or 
 
 ###  1.3. <a name='Glue'></a>Glue
 
-:white_check_mark: Glue Data Catalog
+#### Glue Data Catalog
 
 * Metadata repository for all your tables
 * Automated schema inference
 * Schemas are versioned
 
-:white_check_mark: Glue Crawlers
+#### Glue Crawlers
 
 * Help build Glue Data Catalog
 * Go through your data to infer schemas ans partitions
@@ -173,51 +173,63 @@ Streams video feeds from security cameras, web cams, audio feeds, etc. to S3 or 
 * Run on a Schedule or on Demand
 * Need an IAM role/credentials to access the data source
 
-:white_check_mark: Glue ETL
+#### Glue ETL
 
 * Runs on a serverless Apache Spark Cluster
 * Job can be written in Python, Scala, Spark or Pyspark
 * Glue Scheduler to schedule the jobs
 * Glue Triggers to automate job runs based on "events"
 
-:white_check_mark: Redshift
+### DBs
+#### Redshift
 
 * Data warehouse for SQL analytics (OLAP)
 * Load data from S3 to Redshift
 * Use Redshift Spectrum to query data directly in S3 (No loading)
 
-:white_check_mark: RDS, Aurora
+#### RDS
 
-* Relational data store, SQL (OLTP)
+* Relational database service for MySQL, SQL Server, Oracle, Postgres, Aurora, MariaDB
 * Must provision servers in advance
 
-:white_check_mark: DynamoDB
+### DynamoDB
 
 * NoSQL database
 
-:white_check_mark: ElasticSearch
+### Neptune
+
+* Fully managed graph database service
+
+### DMS (Data Migration Service)
+
+* Move data from your database to a database on AWS service with minimal downtime
+
+### ElasticSearch
 
 * Index for your data
 * Search capability
 
-:white_check_mark: ElatiCache
+### ElatiCache
 
 * data cache technology
 
-:white_check_mark: AWS Batch
-
-* Batch jobs run as Docker containers - not just for data
-* Manages EC2 instances for you
-
-:white_check_mark: AWS Data Pipelines
+### AWS Data Pipelines
 
 * A specialized workflow for **working with data**
 * Orchestration of data ETL jobs
 * Directly work with S3, EMR, DynamoDB, Redshift or RDS
+* Runs on multiple EC2 instances and/or EMR
 
-:white_check_mark: AWS Step Functions (Orchestrator)
+### AWS Batch
 
-* A *genetic* way to design and orchestrate workflows (NOT ONLY for data)
+* Service to run offline computing workload
+* Batch jobs run on Docker containers
+* Needs to define the set of instances types and how many instances for the workload (compared to Lambda without provisioning or managing servers)
+
+### AWS Step Functions (workflow management)
+
+* Serverless service to design and orchestrate workflows (NOT ONLY for data)
+* Integrates with other AWS services
 * Provides Error handling and Retry mechanism outside of the code
 * Provides ability to Audit the history of workflows
 * Can "wait" for arbitrary amount of time
