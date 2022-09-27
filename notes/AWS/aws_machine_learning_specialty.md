@@ -128,11 +128,14 @@ VPC Endpoint Gateway:
 
 :white_check_mark: Kinesis Streams (<mark>real-time application</mark>)
 
-* Divide streams in ordered **Shards/Partitions**
-* Data retention is 24 hours (default), up to 365 days, which supports data replay capability
-* Immutability (data cannot be deleted once inserted)
-* Records up to 1MB in size (Great for *Small and fast dataset*)
-* Scales ONLY if you add shards over time
+Divide streaming data from producers (IoT device, click stream etc.) in ordered **Shards/Partitions**. Once in shards, data consumers (such as EC2, Lambda, Kinesis Data Analytics or EMR) can process this data
+
+* Data in shards:
+  * Data is held for 24 hours by default, up to 365 days (data replay capability)
+  * Immutability (data cannot be deleted once inserted)
+  * Data can be ingested at 1000 records/sec or up to 1Mb/s
+  * Data size is up to 1MBe (Great for *Small and fast dataset*)
+* Kinesis Streams scales only if you add # of shards (not fully managed service)
 
 :white_check_mark: Kinesis Data Analytics (<mark>Streaming data ETL, Continuous metric generation</mark>)
 
