@@ -11,6 +11,20 @@ Following notes are taken when I enrolled in Udemy course AWS Certified Machine 
 	* 1.1. [S3](#S3)
 	* 1.2. [Kinesis](#Kinesis)
 	* 1.3. [Glue](#Glue)
+		* 1.3.1. [Glue Data Catalog](#GlueDataCatalog)
+		* 1.3.2. [Glue Crawlers](#GlueCrawlers)
+		* 1.3.3. [Glue ETL](#GlueETL)
+	* 1.4. [DBs](#DBs)
+		* 1.4.1. [Redshift](#Redshift)
+		* 1.4.2. [RDS](#RDS)
+	* 1.5. [DynamoDB](#DynamoDB)
+	* 1.6. [Neptune](#Neptune)
+	* 1.7. [DMS (Data Migration Service)](#DMSDataMigrationService)
+	* 1.8. [ElasticSearch](#ElasticSearch)
+	* 1.9. [ElatiCache](#ElatiCache)
+	* 1.10. [AWS Data Pipelines](#AWSDataPipelines)
+	* 1.11. [AWS Batch](#AWSBatch)
+	* 1.12. [AWS Step Functions (workflow management)](#AWSStepFunctionsworkflowmanagement)
 * 2. [Data Exploratory Analysis :rocket:](#DataExploratoryAnalysis:rocket:)
 	* 2.1. [Data Types](#DataTypes)
 	* 2.2. [Data Distributions](#DataDistributions)
@@ -159,13 +173,13 @@ Streams video feeds from security cameras, web cams, audio feeds, etc. to S3 or 
 
 ###  1.3. <a name='Glue'></a>Glue
 
-#### Glue Data Catalog
+####  1.3.1. <a name='GlueDataCatalog'></a>Glue Data Catalog
 
 * Metadata repository for all your tables
 * Automated schema inference
 * Schemas are versioned
 
-#### Glue Crawlers
+####  1.3.2. <a name='GlueCrawlers'></a>Glue Crawlers
 
 * Help build Glue Data Catalog
 * Go through your data to infer schemas ans partitions
@@ -173,60 +187,60 @@ Streams video feeds from security cameras, web cams, audio feeds, etc. to S3 or 
 * Run on a Schedule or on Demand
 * Need an IAM role/credentials to access the data source
 
-#### Glue ETL
+####  1.3.3. <a name='GlueETL'></a>Glue ETL
 
 * Runs on a serverless Apache Spark Cluster
 * Job can be written in Python, Scala, Spark or Pyspark
 * Glue Scheduler to schedule the jobs
 * Glue Triggers to automate job runs based on "events"
 
-### DBs
-#### Redshift
+###  1.4. <a name='DBs'></a>DBs
+####  1.4.1. <a name='Redshift'></a>Redshift
 
 * Data warehouse for SQL analytics (OLAP)
 * Load data from S3 to Redshift
 * Use Redshift Spectrum to query data directly in S3 (No loading)
 
-#### RDS
+####  1.4.2. <a name='RDS'></a>RDS
 
 * Relational database service for MySQL, SQL Server, Oracle, Postgres, Aurora, MariaDB
 * Must provision servers in advance
 
-### DynamoDB
+###  1.5. <a name='DynamoDB'></a>DynamoDB
 
 * NoSQL database
 
-### Neptune
+###  1.6. <a name='Neptune'></a>Neptune
 
 * Fully managed graph database service
 
-### DMS (Data Migration Service)
+###  1.7. <a name='DMSDataMigrationService'></a>DMS (Data Migration Service)
 
 * Move data from your database to a database on AWS service with minimal downtime
 
-### ElasticSearch
+###  1.8. <a name='ElasticSearch'></a>ElasticSearch
 
 * Index for your data
 * Search capability
 
-### ElatiCache
+###  1.9. <a name='ElatiCache'></a>ElatiCache
 
 * data cache technology
 
-### AWS Data Pipelines
+###  1.10. <a name='AWSDataPipelines'></a>AWS Data Pipelines
 
 * A specialized workflow for **working with data**
 * Orchestration of data ETL jobs
 * Directly work with S3, EMR, DynamoDB, Redshift or RDS
 * Runs on multiple EC2 instances and/or EMR
 
-### AWS Batch
+###  1.11. <a name='AWSBatch'></a>AWS Batch
 
 * Service to run offline computing workload
 * Batch jobs run on Docker containers
 * Needs to define the set of instances types and how many instances for the workload (compared to Lambda without provisioning or managing servers)
 
-### AWS Step Functions (workflow management)
+###  1.12. <a name='AWSStepFunctionsworkflowmanagement'></a>AWS Step Functions (workflow management)
 
 * Serverless service to design and orchestrate workflows (NOT ONLY for data)
 * Integrates with other AWS services
