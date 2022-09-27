@@ -148,13 +148,14 @@ Divide streaming data from producers (IoT device, click stream etc.) in ordered 
 :white_check_mark: Kinesis Firehose (<mark>Delivery service</mark>)
 
 * Write out data in big batch and deliver data to target destination *near real-time*
-* Fully managed service, auto-scaling
+* Fully managed service, auto-scaling (No need to deal with shards)
 ![Kinesis Firehose](../../images/Kinesis%20Firehose.png)
 
 :white_check_mark: Kinesis Video Streams
 
-* Keep data for 1 hour to 10 years
-* Video playback capability
+Streams video feeds from security cameras, web cams, audio feeds, etc. to S3 or other AWS services (Rekognition)
+
+* Keep data for 1 hour up to 10 years (Video playback capability)
 
 ###  1.3. <a name='Glue'></a>Glue
 
