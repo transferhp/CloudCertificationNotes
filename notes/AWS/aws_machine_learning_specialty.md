@@ -48,6 +48,22 @@ Following notes are taken when I enrolled in Udemy course AWS Certified Machine 
 	* 5.6. [Amazon Forecast](#AmazonForecast)
 	* 5.7. [Amazon Lex](#AmazonLex)
 	* 5.8. [Amazon Personalize](#AmazonPersonalize)
+	* 5.9. [TorchServe](#TorchServe)
+	* 5.10. [AWS Neuron](#AWSNeuron)
+	* 5.11. [AWS Panorama](#AWSPanorama)
+	* 5.12. [Contact Lens](#ContactLens)
+	* 5.13. [Amazon Augmented AI](#AmazonAugmentedAI)
+* 6. [ML Implementation and Operations :rocket:](#MLImplementationandOperations:rocket:)
+	* 6.1. [SageMaker on the edge](#SageMakerontheedge)
+	* 6.2. [SageMaker Security practices](#SageMakerSecuritypractices)
+		* 6.2.1. [Protect data at rest in SageMaker](#ProtectdataatrestinSageMaker)
+		* 6.2.2. [Protect data at transit in SageMaker](#ProtectdataattransitinSageMaker)
+	* 6.3. [SageMaker VPC](#SageMakerVPC)
+	* 6.4. [SageMaker logging and monitoring](#SageMakerloggingandmonitoring)
+	* 6.5. [SageMaker resource management](#SageMakerresourcemanagement)
+		* 6.5.1. [Instance types practices](#Instancetypespractices)
+		* 6.5.2. [Availability Zones (AZ) practices](#AvailabilityZonesAZpractices)
+	* 6.6. [Inference Pipeline](#InferencePipeline)
 
 <!-- vscode-markdown-toc-config
 	numbering=true
@@ -641,23 +657,24 @@ VPC Endpoint Gateway:
 
 ###  5.2. <a name='AmazonTranslate'></a>Amazon Translate
 
-* uses deep learning for translation
+* Provides deep learning based **translation** services
 
 ###  5.3. <a name='AmazonTranscribe'></a>Amazon Transcribe
 
-* used for Speech to Text
+* Provides **Speech to Text** services
 
 ###  5.4. <a name='AmazonPolly'></a>Amazon Polly
 
-* used for Text to Speech
+* Provides **Text to Speech** services
+* internally use *Lexicons* to customize pronunciation of specific words or phrases, use *SSML* to control how the text words been pronounced and use *Speech Marks*to encode when sentences/words starts and ends in the audio stream. 
 
 ###  5.5. <a name='AmazonRekognition'></a>Amazon Rekognition
 
-* used for Computer Vision
+* Provides **Computer Vision** services
 
 ###  5.6. <a name='AmazonForecast'></a>Amazon Forecast
 
-* used for time-series analysis
+* Provides **time-series analysis**
 * has following algorithms:
   
   * CNN-QR (CNN backend)
@@ -689,4 +706,129 @@ VPC Endpoint Gateway:
 
 ###  5.7. <a name='AmazonLex'></a>Amazon Lex
 
+* Natural-language chatbot engine
+
 ###  5.8. <a name='AmazonPersonalize'></a>Amazon Personalize
+
+* Fully-managed recommender engine
+* provides API access (Feed in data via S3/API with explicit schema defined in Avro format)
+* get recommendations/personalized ranking
+
+###  5.9. <a name='TorchServe'></a>TorchServe
+
+* Model serving framework for Pytorch
+
+###  5.10. <a name='AWSNeuron'></a>AWS Neuron
+
+* SDK for optimizing ML inferences on AWS Inferentia chips
+
+###  5.11. <a name='AWSPanorama'></a>AWS Panorama
+
+* Brings computer vision to the edge cameras
+
+###  5.12. <a name='ContactLens'></a>Contact Lens
+
+* Provides customer support in call center
+
+###  5.13. <a name='AmazonAugmentedAI'></a>Amazon Augmented AI
+
+* Human review of ML predictions
+
+##  6. <a name='MLImplementationandOperations:rocket:'></a>ML Implementation and Operations :rocket:
+
+* All models in SageMaker are hosted in Docker containers
+```python
+from sagemaker.estimator import Estimator
+
+estimator=Estimator(image_name="YOUR IMAGE NAME",
+                    ROLE="SageMakerRole",
+                    train_instance_count=1,
+                    train_instance_type="local")
+estimator.fit()
+```
+* Structure of a training container
+```
+/opt/ml
+|---input
+|   |---config
+|   |   |---hyperparameters.json
+|   |   |---resourceConfig.json
+|   |
+|   |---data
+|       |---<channel_name>
+|           |---<input data>
+|
+|---model
+|
+|---code
+|   |---<script files>
+|
+|---output
+    |---failure
+
+```
+* Structure of a deployment container
+```
+/opt/ml
+|----model
+     |---<model files>
+```
+* Test out multiple models on live traffic using **Production Variants** (A/B tests)
+
+###  6.1. <a name='SageMakerontheedge'></a>SageMaker on the edge
+
+* SageMaker Neo 
+  * consists of a **compiler** and **runtime** library
+  * optimizes code for specific edge devices
+  * paris with **AWS IoT Greengrass** (train a model on cloud SageMaker, compile the model with Neo and deploy it to actual edge devices using IoT Greengrass)
+
+###  6.2. <a name='SageMakerSecuritypractices'></a>SageMaker Security practices
+
+* use IAM
+* use MFA
+* use TLS/SSL to connect everything
+* use *CloudTrail* to log API and use activity
+* use encryption
+
+####  6.2.1. <a name='ProtectdataatrestinSageMaker'></a>Protect data at rest in SageMaker
+
+* use AWS Key Management Service (KMS) to encrypt everything in SageMaker (notebooks, SageMaker jobs, everything under `opt/ml` and `tmp` in Docker container)
+* use standard S3 encryption to encrypt S3 bucket (training data and hosting models) 
+
+
+####  6.2.2. <a name='ProtectdataattransitinSageMaker'></a>Protect data at transit in SageMaker
+
+* use TLS/SSL to encrypt all traffic
+* IAM roles are assigned to SageMaker to access resources
+* inter-container traffic encryption (can increase training time and cost with deep learning)
+
+###  6.3. <a name='SageMakerVPC'></a>SageMaker VPC
+
+* training jobs are ran in a Virtual Private Cloud (VPC)
+* training jobs read data from S3 (If use private VPC, then need to set up S3 VPC endpoint)
+* notebooks are internet-enabled by default (If disabled, your VPC needs an interface endpoint or NAT Gateway to allow outbound connections)
+* Training and Inference containers are internet-enabled by default (can be turned off for network isolation)
+
+###  6.4. <a name='SageMakerloggingandmonitoring'></a>SageMaker logging and monitoring
+
+* use **CloudWatch** to log, monitor and set alarm
+* use **CloudTrail** to record actions from users, roles and services within SageMaker (log files are sent to S3 for auditing)
+
+###  6.5. <a name='SageMakerresourcemanagement'></a>SageMaker resource management
+
+####  6.5.1. <a name='Instancetypespractices'></a>Instance types practices
+
+* use GPU instances (P2 or P3) for training deep learning models
+* use compute instances (C4 or C5) for inference
+* use **EC2 Spot instances** for training (save up to 90% cost), but spot instances can be interrupted!
+* use **Elastic Inference** to reduce deep learning inference cost (deploy on CPU instance but with a Elastic Inference accelerator)
+
+####  6.5.2. <a name='AvailabilityZonesAZpractices'></a>Availability Zones (AZ) practices
+
+* distribute instances across availability zones
+* deploy multiple instances for each production endpoint (resilient to failure)
+* configure VPC with at least two subnets, each in a different AZ
+
+###  6.6. <a name='InferencePipeline'></a>Inference Pipeline
+
+* use to chain multiple inference containers into one pipeline of results
